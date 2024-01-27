@@ -1,19 +1,20 @@
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from httplib2 import Http
-from oauth2client import file, client, tools
+from googleapiclient.errors import HttpError
 
 
 # initiates OAuth 2.0 process & returns credentials
 def authenticate():
-    SCOPES = "https://www.googleapis.com/auth/calendar"
-    store = file.Storage("storage.json")
-    flow = client.flow_from_clientsecrets('client_secret.json', SCOPES)
-    return tools.run_flow(flow, store) # return credentials
+    SCOPES = ["https://www.googleapis.com/auth/calendar"]
+    flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', SCOPES)
+    return flow.run_local_server(port=8080) # return credentials
 
 
 # returns user's calendar
 def getCalendar(credentials):
-    return build('calendar', 'v3', http=credentials.authorize(Http()))
+    return build('calendar', 'v3', credentials=credentials)
 
 
 # creates event in calendar & returns event
@@ -42,12 +43,6 @@ EVENT = {
     'end': {'dateTime': '2023-03-24T23:59:00+01:00'}
 }
 
-EVENT = {
-    'summary': 'lol2',
-    'location': '10332 Adobe Cir, Irvine, CA',
-    'start': {'dateTime': '2023-03-24T19:00:00+01:00'},
-    'end': {'dateTime': '2023-03-24T23:59:00+01:00'}
-}
 
 creds = authenticate()
 calendar = getCalendar(creds)
