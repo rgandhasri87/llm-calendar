@@ -3,7 +3,13 @@
 import google.generativeai as genai
 import google.ai.generativelanguage as glm
 
-genai.configure(api_key="AIzaSyCXonLZeuV_Iy44XFKc8Q6P3x-QgonD16s")
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+genai.configure(api_key=API_KEY)
 
 def generate_model():
     schedule_event_tool = glm.Tool(
@@ -90,3 +96,13 @@ def add_event(event_to_create, calendar):
     event = create_event_in_calendar(calendar, event_obj)
 
     return event
+
+
+if __name__ == "__main__":
+
+    test_model = genai.GenerativeModel("gemini-pro")
+    chat = test_model.start_chat()
+
+    response = chat.send_message("Thanks for being so helpful during the hackathon!")
+    print(response.text)
+    
