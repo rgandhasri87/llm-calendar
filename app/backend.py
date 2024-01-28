@@ -39,7 +39,7 @@ def get_event_object(model, user_prompt: str):
     "If the event start and end times are not specified, pick reasonable ones based on the user-provided description. Scheduling an event with an unspecified time for today is acceptable.",
     "DO NOT ask the user for confirmation. Just try to schedule the event on the calendar. The user will manually edit whatever is generated if needed.",
     "Output times in the API datetime format to be used by a program.",
-    "Today is February 1, 2024 and the current timezone is Pacific Standard Time."
+    "Today is February 1, 2024 and the current timezone is Pacific Standard Time. Include the timezone in any generated datetimes."
     "Schedule the following event: "
 ]
 
@@ -65,6 +65,7 @@ def create_event_in_calendar(calendar, body, calendarId='primary', sendNotificat
     except Exception as e:
         print(f"failed to create event with body {body}. Error {e}")
         return False
+
 
 def add_event(event_to_create, calendar):
 
