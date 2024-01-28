@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<form action="{{ url_for("index")}}" method="post">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -38,8 +39,8 @@
         <div class="textbox form-group">
           <label for="comment">Question:</label>
           <div class="one-liners">
-            <textarea class="form-control" rows="1" id="comment"></textarea>
-            <button class="submit-button">
+            <input type="text" class="form-control" rows="1" id="comment" name="comment"></input>
+            <button type="submit" class="submit-button">
               <svg
                 width="32px"
                 height="32px"
