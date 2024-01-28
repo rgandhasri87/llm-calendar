@@ -1,5 +1,6 @@
 * {
   font-family: sans-serif;
+  color: 121212;
 }
 
 .separator {
@@ -72,9 +73,23 @@
 .chatbox {
   margin: 2em;
   border-style: solid;
+  background-color: lavender;
 }
 .textbox {
   margin: 2em;
   margin-top: 0;
   margin-bottom: 1em;
+}
+.one-liners {
+  display: flex;
+  align-items: end;
+  border-radius: 8px;
+  justify-content: end;
+}
+.form-control {
+}
+.submit-button {
+  background-color: #121212;
+  padding: 0;
+  width: min-content;
 }
