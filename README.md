@@ -5,4 +5,6 @@ source esdenv/bin/activate in Linux
 
 deactivate to deactivate
 
-then run pip install django
+then run pip install flask
+
+python calendar_app/manage.py runserver

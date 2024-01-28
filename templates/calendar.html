@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      href="staticFiles/Untitled117_20240127192536.png"
+      type="image/gif"
+      sizes="16x16"
+    />
+    <link rel="stylesheet" href="staticFiles/styles.css" />
+  </head>
+  <body>
+    <!-- Button to toggle offcanvas -->
+    <div class="separator">
+      <div class="interface">
+        <div class="main-header">
+          <button
+            class="show-calendar btn btn-primary"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasCalendar"
+          >
+            Show Calendar
+          </button>
+          <div class="title">Calendar Buddy</div>
+        </div>
+        <div class="chatbox">Chatbox</div>
+        <div class="textbox form-group">
+          <label for="comment">Question:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="past-events">Past Events</div>
+    </div>
+    <!-- Offcanvas container -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasCalendar"
+      aria-labelledby="offcanvasCalendarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasCalendarLabel">
+          Google Calendar
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Google Calendar iframe -->
+        <iframe
+          class="calendar-iframe"
+          src="{{calendar_embed_url}}"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
