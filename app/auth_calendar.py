@@ -38,16 +38,10 @@ def get_calendar(credentials):
 # description (string)
 # colorId (string)
 # location (string)
-EVENT = {
-    'summary': 'lol', # ,<- title
-    'description': 'lolol',
-    'location': '10332 Adobe Cir, Irvine, CA',
-    'start': {'dateTime': '2023-03-24T19:00:00+01:00'},
-    'end': {'dateTime': '2023-03-24T23:59:00+01:00'}
-}
-
-
-if __name__ == "__main__":
-    creds = authenticate()
-    calendar = getCalendar(creds)
-    create_event_in_calendar(calendar, EVENT)
+# EVENT = {
+#     'summary': 'lol', # ,<- title
+#     'description': 'lolol',
+#     'location': '10332 Adobe Cir, Irvine, CA',
+#     'start': {'dateTime': '2023-03-24T19:00:00+01:00'},
+#     'end': {'dateTime': '2023-03-24T23:59:00+01:00'}
+# }
