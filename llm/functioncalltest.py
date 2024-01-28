@@ -47,5 +47,3 @@ print("|             |                       |")
 fc = response.candidates[0].content.parts[0].function_call
 
 # assert fc.name == "schedule event"
-
-print(fc)
