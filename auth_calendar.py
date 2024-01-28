@@ -23,8 +23,8 @@ def create_event_in_calendar(calendar, body, calendarId='primary', sendNotificat
         event = calendar.events().insert(calendarId=calendarId, sendNotifications=sendNotifications, body=body).execute()
         print(f"successfully created event with body {body}")
         return event
-    except:
-        print(f"failed to create event with body {body}")
+    except Exception as e:
+        print(f"failed to create event with body {body}. Error {e}")
         return False
 
 
@@ -44,6 +44,7 @@ EVENT = {
 }
 
 
-creds = authenticate()
-calendar = getCalendar(creds)
-create_event_in_calendar(calendar, EVENT)
+if __name__ == "__main__":
+    creds = authenticate()
+    calendar = getCalendar(creds)
+    create_event_in_calendar(calendar, EVENT)
