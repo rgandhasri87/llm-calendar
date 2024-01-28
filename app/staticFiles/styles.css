@@ -10,8 +10,8 @@
   width: 100%;
 }
 .past-events {
-  background-color: #121212;
-  color: white;
+  background-color: lavender;
+  color: #121212;
   height: 100%;
   align-items: center;
   text-align: center;
@@ -38,22 +38,16 @@
   border-color: #121212;
 }
 
-.offcanvas {
-  width: 800px !important; /* Set a fixed width for the offcanvas */
-}
-
 .calendar-iframe {
-  width: 100%; /* Make the calendar iframe fill the entire width of the offcanvas */
-  height: calc(
-    100vh - 56px
-  ); /* Make the calendar iframe fill the height of the offcanvas minus the offcanvas header height */
+  width: 100% !important;
+  height: 34vw !important;
   border: 0;
 }
 
 .main-header {
   margin-top: 1em;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: center;
 }
 .rest-of-header {
   display: flex;
@@ -74,11 +68,14 @@
   margin: 2em;
   border-style: solid;
   background-color: lavender;
+  width: 80vw !important;
+  height: 35vw !important;
+  margin-bottom: 1em;
 }
 .textbox {
   margin: 2em;
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: auto;
 }
 .one-liners {
   display: flex;

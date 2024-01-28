@@ -25,17 +25,23 @@
     <div class="separator">
       <div class="interface">
         <div class="main-header">
-          <button
+          <!-- <button
             class="show-calendar btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasCalendar"
           >
             Show Calendar
-          </button>
+          </button> -->
           <div class="title">Calendar Buddy</div>
         </div>
-        <div class="chatbox"></div>
+        <div class="chatbox">
+          <iframe
+          class="calendar-iframe"
+          src="{{calendar_embed_url}}"
+          frameborder="0"
+          scrolling="no"
+        ></iframe></div>
         <div class="textbox form-group">
           <label for="comment">Question:</label>
           <div class="one-liners">
@@ -72,7 +78,7 @@
       <div class="past-events">Past Events</div>
     </div>
     <!-- Offcanvas container -->
-    <div
+    <!-- <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
       id="offcanvasCalendar"
@@ -90,15 +96,9 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <!-- Google Calendar iframe -->
-        <iframe
-          class="calendar-iframe"
-          src="{{calendar_embed_url}}"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
+        <!-Google Calendar iframe -->
       </div>
-    </div>
+    </div> 
 
     <!-- Bootstrap JavaScript -->
     <script
