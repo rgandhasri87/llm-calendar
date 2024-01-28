@@ -1,6 +1,7 @@
 from app import app
 from flask import request, render_template
 import auth_calendar
+from backend import add_event_to_calendar
 
 
 sample_event_body = {
@@ -14,9 +15,14 @@ sample_event_body = {
 @app.route('/', methods=['GET', 'POST'])
 def index():
     creds = auth_calendar.authenticate()
+    calendar = auth_calendar.getCalendar(creds)
 
 
     if request.method == "POST":
-        prompt = request.form.get("comment")
-        print(prompt)
+        event_to_create = request.form.get("comment")
+
+        # print(prompt)
+        add_event_to_calendar(event_to_create, calendar)
+
+
     return render_template("calendar.html")

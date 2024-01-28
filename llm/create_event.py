@@ -35,10 +35,11 @@ def get_event_object(model, user_prompt: str):
     print("getting call")
     prompting_messages = [
     "If an event location is not specified, infer the location within reason. For example, chores are probably done at home.",
+    "Do not ask the user for further information. It is OK to infer anything reasonable."
     "If the event start and end times are not specified, pick reasonable ones based on the user-provided description. Scheduling an event with an unspecified time for today is acceptable.",
     "DO NOT ask the user for confirmation. Just try to schedule the event on the calendar. The user will manually edit whatever is generated if needed.",
     "Output times in the API datetime format to be used by a program.",
-    "Today is January 27, 2024."
+    "Today is February 1, 2024 and the current timezone is Pacific Standard Time."
     "Schedule the following event: "
 ]
 
@@ -52,8 +53,7 @@ def get_event_object(model, user_prompt: str):
 
     print("TYPE", type(response.candidates[0].content.parts[0].function_call))
 
-    while response.candidates[0].content.parts[0].function_call == None:
-        print("FUNCITON CALL:", response.candidates[0].content.parts[0].function_call)
+    while (response.candidates[0].content.parts[0].function_call.args["summary"] == None):
         response = chat.send_message("yes")
 
     print("return value: ", response.candidates[0])
