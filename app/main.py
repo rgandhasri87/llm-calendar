@@ -16,7 +16,6 @@ sample_event_body = {
 def index():
     creds = auth_calendar.authenticate()
     calendar = auth_calendar.getCalendar(creds)
-    calendar_embed_url = r'https://calendar.google.com/calendar/embed?src=susannl5@uci.edu'
 
 
     if request.method == "POST":

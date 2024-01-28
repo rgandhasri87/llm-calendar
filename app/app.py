@@ -16,12 +16,13 @@ sample_event_body = {
 def index():
     creds = authenticate()
     calendar = get_calendar(creds)
+    calendar_embed_url = r'https://calendar.google.com/calendar/embed?src=susannl5@uci.edu'
 
     if request.method == "POST":
         event_to_create = request.form.get("comment")
         event = add_event(event_to_create, calendar)
 
-    return render_template("calendar.html")
+    return render_template("calendar.html", calendar_embed_url=calendar_embed_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

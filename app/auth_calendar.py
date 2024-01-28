@@ -31,6 +31,9 @@ def authenticate():
 def get_calendar(credentials):
     return build('calendar', 'v3', credentials=credentials)
 
+if __name__ == '__main__':
+    creds = authenticate()
+    calendar = get_calendar(creds)
 ###################################################################################################
 
 
