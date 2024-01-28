@@ -1,7 +1,7 @@
 from app import app
 from flask import request, render_template
 import auth_calendar
-from backend import add_event_to_calendar
+from backend import add_event
 
 
 sample_event_body = {
@@ -23,7 +23,7 @@ def index():
         event_to_create = request.form.get("comment")
 
         # print(prompt)
-        add_event_to_calendar(event_to_create, calendar)
+        add_event(event_to_create, calendar)
 
 
     return render_template("calendar.html", calendar_embed_url=calendar_embed_url)

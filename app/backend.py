@@ -3,7 +3,13 @@
 import google.generativeai as genai
 import google.ai.generativelanguage as glm
 
-genai.configure(api_key="AIzaSyCXonLZeuV_Iy44XFKc8Q6P3x-QgonD16s")
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+genai.configure(api_key=API_KEY)
 
 def generate_model():
     schedule_event_tool = glm.Tool(
@@ -39,7 +45,7 @@ def get_event_object(model, user_prompt: str):
     "If the event start and end times are not specified, pick reasonable ones based on the user-provided description. Scheduling an event with an unspecified time for today is acceptable.",
     "DO NOT ask the user for confirmation. Just try to schedule the event on the calendar. The user will manually edit whatever is generated if needed.",
     "Output times in the API datetime format to be used by a program.",
-    "Today is February 1, 2024 and the current timezone is Pacific Standard Time."
+    "Today is February 1, 2024 and the current timezone is Pacific Standard Time. Include the timezone in any generated datetimes."
     "Schedule the following event: "
 ]
 
@@ -66,6 +72,7 @@ def create_event_in_calendar(calendar, body, calendarId='primary', sendNotificat
         print(f"failed to create event with body {body}. Error {e}")
         return False
 
+
 def add_event(event_to_create, calendar):
 
     model = generate_model()
@@ -89,3 +96,13 @@ def add_event(event_to_create, calendar):
     event = create_event_in_calendar(calendar, event_obj)
 
     return event
+
+
+if __name__ == "__main__":
+
+    test_model = genai.GenerativeModel("gemini-pro")
+    chat = test_model.start_chat()
+
+    response = chat.send_message("Thanks for being so helpful during the hackathon!")
+    print(response.text)
+    
