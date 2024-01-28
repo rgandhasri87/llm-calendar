@@ -20,7 +20,7 @@ def generate_model():
                         "start" :       glm.Schema(type=glm.Type.STRING, description="String in datetime format to be used by a program for when the event begins"),
                         "end" :         glm.Schema(type=glm.Type.STRING, description="String in datetime format to be used by a program for when the event ends")
                     },
-                    required=["start", "end"]
+                    required=["summary" ,"description", "location", "start", "end"]
                 )
             )
         ]
@@ -36,7 +36,7 @@ def get_event_object(model, user_prompt: str):
     prompting_messages = [
     "If an event location is not specified, infer the location within reason. For example, chores are probably done at home.",
     "If the event start and end times are not specified, pick reasonable ones based on the user-provided description. Scheduling an event with an unspecified time for today is acceptable.",
-    "Do not ask the user for confirmation. Just try to schedule the event on the calendar. The user will manually edit whatever is generated if needed.",
+    "DO NOT ask the user for confirmation. Just try to schedule the event on the calendar. The user will manually edit whatever is generated if needed.",
     "Output times in the API datetime format to be used by a program.",
     "Today is January 27, 2024."
     "Schedule the following event: "
@@ -49,6 +49,12 @@ def get_event_object(model, user_prompt: str):
         chat.send_message(m)
 
     response = chat.send_message(user_prompt)
+
+    print("TYPE", type(response.candidates[0].content.parts[0].function_call))
+
+    while response.candidates[0].content.parts[0].function_call == None:
+        print("FUNCITON CALL:", response.candidates[0].content.parts[0].function_call)
+        response = chat.send_message("yes")
 
     print("return value: ", response.candidates[0])
     return response.candidates[0].content.parts[0].function_call

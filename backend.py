@@ -52,8 +52,8 @@ event_obj = {
     'summary': summary, # ,<- title
     'description': description,
     'location': '10332 Adobe Cir, Irvine, CA',
-    'start': {'dateTime': '2023-03-24T19:00:00+01:00'},
-    'end': {'dateTime': '2023-03-24T23:59:00+01:00'}
+    'start': {'dateTime': start},
+    'end': {'dateTime': end}
 }
 # EVENT = {
 #     'summary': 'lol', # ,<- title
